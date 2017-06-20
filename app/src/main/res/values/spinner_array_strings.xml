@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="genres_array">
-        <item>Electronic</item>
         <item>Funk</item>
         <item>Gospel</item>
         <item>Jazz</item>
+        <item>Punk</item>
         <item>Pop</item>
         <item>R&amp;B</item>
         <item>Rock</item>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@color/colorPrimary"
-    tools:context="com.darkknightsds.theprinceexperience.MainActivity"
+    tools:context="com.darkknightsds.theprinceexperience.ui.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
 
