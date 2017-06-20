@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="249dp"
-        android:layout_height="391dp"
+        android:layout_width="306dp"
+        android:layout_height="417dp"
         app:srcCompat="@drawable/prince_background_white"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -23,7 +23,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.504" />
+        app:layout_constraintVertical_bias="0.692" />
 
     <TextView
         android:id="@+id/textView2"
@@ -40,14 +40,14 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Prince"
+        android:text="Prince "
         android:textColor="@color/colorSecondary"
         android:textSize="67sp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.971"
+        app:layout_constraintVertical_bias="1.0"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
