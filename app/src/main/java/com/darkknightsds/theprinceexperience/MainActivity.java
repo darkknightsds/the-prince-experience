@@ -1,5 +1,6 @@
 package com.darkknightsds.theprinceexperience;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,14 +13,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    @BindView(R.id.textView2) TextView mTextView2;
+    @BindView(R.id.textView3) TextView mTextView3;
+    @BindView(R.id.textView4) TextView mTextView4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -31,6 +41,12 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
+        Typeface header2Font = Typeface.createFromAsset(getAssets(), "fonts/aero_matics_light.ttf");
+        Typeface header1Font = Typeface.createFromAsset(getAssets(), "fonts/still_time.ttf");
+        mTextView2.setTypeface(header2Font);
+        mTextView4.setTypeface(header2Font);
+        mTextView3.setTypeface(header1Font);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
