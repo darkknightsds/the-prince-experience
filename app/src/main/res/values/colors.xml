@@ -3,7 +3,6 @@
     <color name="colorPrimary">#aa00ff</color>
     <color name="colorPrimaryDark">#7200ca</color>
     <color name="colorPrimaryLight">#e254ff</color>
-    <color name="colorTextIcons">#ffffff</color>
     <color name="colorPrimaryText">#ffffff</color>
     <color name="colorSecondaryText">#000000</color>
     <color name="colorSecondary">#ffd600</color>
