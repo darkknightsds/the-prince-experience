@@ -22,7 +22,7 @@ public class Recommendation {
         return genre;
     }
 
-    public String getPlaylistUrl() {
+    public String getPlaylistUri() {
         return playlistUri;
     }
 
