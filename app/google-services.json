@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1022038173493",
+    "firebase_url": "https://the-prince-experience.firebaseio.com",
+    "project_id": "the-prince-experience",
+    "storage_bucket": "the-prince-experience.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022038173493:android:8375701ce66a80a0",
+        "android_client_info": {
+          "package_name": "com.darkknightsds.theprinceexperience"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022038173493-j817fvh19tsfovmuus2tf1p7n89ianlq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkknightsds.theprinceexperience",
+            "certificate_hash": "97f10e55abf9d7d86d58e9ab0d9259bb9034c155"
+          }
+        },
+        {
+          "client_id": "1022038173493-l33chao7em1b8ui064l94oan1p3lfdgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzmMK-u86ZLXTl27B08-Q2benWC9iuDbA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022038173493-l33chao7em1b8ui064l94oan1p3lfdgh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

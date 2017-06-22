@@ -1,7 +1,32 @@
-{ "albums": [{
-  "genre": "",
-  "playlistUrl": "",
-  "albums": "",
-  "image": ""
-}]
+{ "recommendations": [{
+  "genre": "Funk",
+  "playlistUri": "spotify:user:12146790877:playlist:1XoahiqxBG1RMi4kLdU1gT",
+  "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/prince_funk.jpg?alt=media&token=afafb195-c88e-4890-8388-476724c3c7bf"
+}],
+  "albums": [{
+    "title": "Dirty Mind",
+    "year": "1980",
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/dirty_mind.jpg?alt=media&token=98ef45aa-f5d8-46b1-9516-1ea85bf2747f",
+    "genres": "Funk, Punk"
+  },{
+    "title": "Controversy",
+    "year": "1981",
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/controversy.jpg?alt=media&token=f335a277-4ace-4607-82c6-2acb446fcc5d",
+    "genres": "Funk, Punk"
+  },{
+    "title": "What Time Is It?",
+    "year": "1982",
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/dirty_mind.jpg?alt=media&token=98ef45aa-f5d8-46b1-9516-1ea85bf2747f",
+    "genres": "Funk"
+  },{
+    "title": "The Black Album",
+    "year": "1987",
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/the_black_album.jpg?alt=media&token=0a506b09-7d18-4b84-9871-322b4c3b36bd",
+    "genres": "Funk"
+  },{
+    "title": "Graffiti Bridge",
+    "year": "1990",
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/graffiti_bridge.jpg?alt=media&token=5fd591c5-a106-4324-b7e6-a0af18089dfd",
+    "genres": "Funk, Gospel"
+    }]
 }

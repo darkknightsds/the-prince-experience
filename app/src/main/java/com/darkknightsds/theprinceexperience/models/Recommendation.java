@@ -3,21 +3,18 @@ package com.darkknightsds.theprinceexperience.models;
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Parcel
 public class Recommendation {
     String genre;
-    String playlistUrl;
-    List<String> albums = new ArrayList<>();
+    String playlistUri;
     String image;
 
     public Recommendation() {}
 
-    public Recommendation(String genre, String playlistUrl, List<String> albums, String image) {
+    public Recommendation(String genre, String playlistUri, String image) {
         this.genre = genre;
-        this.playlistUrl = playlistUrl;
-        this.albums = albums;
+        this.playlistUri = playlistUri;
         this.image = image;
     }
 
@@ -26,11 +23,7 @@ public class Recommendation {
     }
 
     public String getPlaylistUrl() {
-        return playlistUrl;
-    }
-
-    public List<String> getAlbums() {
-        return albums;
+        return playlistUri;
     }
 
     public String getImage() {
