@@ -1,22 +1,26 @@
 package com.darkknightsds.theprinceexperience.ui;
 
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.darkknightsds.theprinceexperience.R;
 import com.darkknightsds.theprinceexperience.models.Recommendation;
 
 import org.parceler.Parcels;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class RecommendationFragment extends Fragment {
+import butterknife.BindView;
 
+public class RecommendationFragment extends Fragment {
+    @BindView(R.id.recommendationImage) ImageView mRecoImage;
+    @BindView(R.id.spotifyLogo) ImageView mSpotifyLogo;
+    @BindView(R.id.recommendationTitle) TextView mRecoTitle;
 
     public RecommendationFragment() {}
 
