@@ -31,6 +31,7 @@ public class SpinnerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_spinner, container, false);
+        getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
         unbinder = ButterKnife.bind(this, view);
 
         Typeface aeromaticsFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/aero_matics_light.ttf");
@@ -49,5 +50,6 @@ public class SpinnerFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        getActivity().findViewById(R.id.fab).setVisibility(View.VISIBLE);
     }
 }
