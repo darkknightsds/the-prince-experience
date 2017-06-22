@@ -8,4 +8,5 @@
     <color name="colorSecondary">#ffd600</color>
     <color name="colorSecondaryDark">#ffff52</color>
     <color name="colorSecondaryLight">#c7a500</color>
+    <color name="spinnerFragmentBackground">#0e100f</color>
 </resources>

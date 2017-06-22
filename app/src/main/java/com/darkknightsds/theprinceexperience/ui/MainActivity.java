@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Typeface header2Font = Typeface.createFromAsset(getAssets(), "fonts/aero_matics_light.ttf");
-        Typeface header1Font = Typeface.createFromAsset(getAssets(), "fonts/still_time.ttf");
-        mTextView2.setTypeface(header2Font);
-        mTextView4.setTypeface(header2Font);
-        mTextView3.setTypeface(header1Font);
+        Typeface aeromaticsFont = Typeface.createFromAsset(getAssets(), "fonts/aero_matics_light.ttf");
+        Typeface stillTimeFont = Typeface.createFromAsset(getAssets(), "fonts/still_time.ttf");
+        mTextView2.setTypeface(aeromaticsFont);
+        mTextView4.setTypeface(aeromaticsFont);
+        mTextView3.setTypeface(stillTimeFont);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
