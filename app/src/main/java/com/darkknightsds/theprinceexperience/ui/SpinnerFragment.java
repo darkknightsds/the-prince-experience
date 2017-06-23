@@ -4,7 +4,6 @@ package com.darkknightsds.theprinceexperience.ui;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +31,14 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
 
     private Unbinder unbinder;
     private String mSelectedGenre;
+    private Typeface mAeromaticsFont;
+
+    View.OnClickListener loadGenre = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ((MainActivity)getActivity()).loadFragment(new RecommendationFragment());
+        }
+    };
 
     public SpinnerFragment() {}
 
@@ -42,9 +49,9 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
         getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
         unbinder = ButterKnife.bind(this, view);
 
-        Typeface aeromaticsFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/aero_matics_light.ttf");
-        mSpinnerHeader.setTypeface(aeromaticsFont);
-        mSpinnerSub.setTypeface(aeromaticsFont);
+        mAeromaticsFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/aero_matics_light.ttf");
+        mSpinnerHeader.setTypeface(mAeromaticsFont);
+        mSpinnerSub.setTypeface(mAeromaticsFont);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.genres_array, android.R.layout.simple_spinner_item);
@@ -52,11 +59,25 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
         mGenresSpinner.setAdapter(adapter);
         mGenresSpinner.setOnItemSelectedListener(this);
 
+        mSymbolButton.setOnClickListener(loadGenre);
         mSymbolButton.setVisibility(View.GONE);
         mPulsator.setVisibility(View.GONE);
 
         return view;
     }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        if (pos !=0) {
+            mSelectedGenre = parent.getItemAtPosition(pos).toString();
+            mLoveSymbol.setVisibility(View.GONE);
+            mSymbolButton.setVisibility(View.VISIBLE);
+            mPulsator.setVisibility(View.VISIBLE);
+            mPulsator.start();
+        }
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {}
 
     @Override
     public void onDestroyView() {
@@ -64,28 +85,4 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
         unbinder.unbind();
         getActivity().findViewById(R.id.fab).setVisibility(View.VISIBLE);
     }
-
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        if (pos !=0) {
-            mSelectedGenre = parent.getItemAtPosition(pos).toString();
-            Log.d("selected item", mSelectedGenre);
-            mLoveSymbol.setVisibility(View.GONE);
-            mSymbolButton.setVisibility(View.VISIBLE);
-            mPulsator.setVisibility(View.VISIBLE);
-        }
-//        loadRecommendation();
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
-
-
-
-//    public void loadRecommendation() {
-////        if (mSelectedGenre != null) {
-//////            ((MainActivity)getActivity()).loadFragment(new RecommendationFragment());
-////        }
-//    }
 }
