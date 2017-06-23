@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,17 +20,20 @@ import com.darkknightsds.theprinceexperience.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 
 public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     @BindView(R.id.genres_spinner) Spinner mGenresSpinner;
     @BindView(R.id.spinnerHeader) TextView mSpinnerHeader;
     @BindView(R.id.spinnerSub) TextView mSpinnerSub;
+    @BindView(R.id.symbolButton) ImageButton mSymbolButton;
+    @BindView(R.id.pulsator) PulsatorLayout mPulsator;
+    @BindView(R.id.loveSymbol) ImageView mLoveSymbol;
 
     private Unbinder unbinder;
     private String mSelectedGenre;
 
     public SpinnerFragment() {}
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +52,9 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
         mGenresSpinner.setAdapter(adapter);
         mGenresSpinner.setOnItemSelectedListener(this);
 
+        mSymbolButton.setVisibility(View.GONE);
+        mPulsator.setVisibility(View.GONE);
+
         return view;
     }
 
@@ -59,18 +67,25 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
-        mSelectedGenre = parent.getItemAtPosition(pos).toString();
-        Log.d("selected item", mSelectedGenre);
-        loadRecommendation();
+        if (pos !=0) {
+            mSelectedGenre = parent.getItemAtPosition(pos).toString();
+            Log.d("selected item", mSelectedGenre);
+            mLoveSymbol.setVisibility(View.GONE);
+            mSymbolButton.setVisibility(View.VISIBLE);
+            mPulsator.setVisibility(View.VISIBLE);
+        }
+//        loadRecommendation();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
 
-    public void loadRecommendation() {
-        if (mSelectedGenre != null) {
-            ((MainActivity)getActivity()).loadFragment(new RecommendationFragment());
-        }
-    }
+
+
+//    public void loadRecommendation() {
+////        if (mSelectedGenre != null) {
+//////            ((MainActivity)getActivity()).loadFragment(new RecommendationFragment());
+////        }
+//    }
 }
