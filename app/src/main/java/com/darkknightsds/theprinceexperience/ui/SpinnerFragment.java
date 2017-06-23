@@ -61,10 +61,16 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
                                int pos, long id) {
         mSelectedGenre = parent.getItemAtPosition(pos).toString();
         Log.d("selected item", mSelectedGenre);
+        loadRecommendation();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
 
+    public void loadRecommendation() {
+        if (mSelectedGenre != null) {
+            ((MainActivity)getActivity()).loadFragment(new RecommendationFragment());
+        }
+    }
 }
