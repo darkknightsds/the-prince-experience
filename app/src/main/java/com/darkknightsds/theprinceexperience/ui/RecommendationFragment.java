@@ -11,10 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class RecommendationFragment extends Fragment {
@@ -24,6 +27,7 @@ public class RecommendationFragment extends Fragment {
 
     private Unbinder unbinder;
     private DatabaseReference mRecoRef;
+    private DatabaseReference mAlbumsRef;
     private DatabaseReference rootRef;
 
     public RecommendationFragment() {}
@@ -42,8 +46,21 @@ public class RecommendationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
+        unbinder = ButterKnife.bind(this, view);
+
+        rootRef = FirebaseDatabase.getInstance().getReference();
+        mRecoRef = rootRef.child(Constants.FIREBASE_CHILD_RECOS);
+        mAlbumsRef = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS);
+
+        getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
 }
