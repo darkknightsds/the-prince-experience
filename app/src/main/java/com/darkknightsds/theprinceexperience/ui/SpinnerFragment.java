@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.darkknightsds.theprinceexperience.R;
 
+import org.parceler.Parcels;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -32,11 +34,16 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
     private Unbinder unbinder;
     private String mSelectedGenre;
     private Typeface mAeromaticsFont;
+    private RecommendationFragment mRecommendationFragment;
 
     View.OnClickListener loadGenre = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ((MainActivity)getActivity()).loadFragment(new RecommendationFragment());
+            mRecommendationFragment = new RecommendationFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("selectedGenre", mSelectedGenre);
+            mRecommendationFragment.setArguments(bundle);
+            ((MainActivity)getActivity()).loadFragment(RecommendationFragment.newInstance(mSelectedGenre));
         }
     };
 
