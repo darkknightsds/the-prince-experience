@@ -104,7 +104,7 @@
             app:layout_constraintTop_toTopOf="@+id/symbolButton"
             app:pulse_color="@color/colorPrimaryText"
             app:pulse_count="1"
-            app:pulse_duration="3500"
+            app:pulse_duration="3250"
             app:pulse_interpolator="Linear"
             app:pulse_repeat="0"
             app:pulse_startFromScratch="false">
