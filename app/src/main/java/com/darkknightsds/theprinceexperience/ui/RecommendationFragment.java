@@ -59,6 +59,8 @@ public class RecommendationFragment extends Fragment {
 
         getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
 
+        Log.d("image url", mRecommendation.getImage());
+
         Picasso.with(view.getContext()).load(mRecommendation.getImage()).into(mRecoImage);
 
         mRecoTitle.setText(mRecommendation.getGenre());
