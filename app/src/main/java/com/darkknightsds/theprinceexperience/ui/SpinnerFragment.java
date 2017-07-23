@@ -14,7 +14,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
@@ -35,6 +38,8 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
     private String mSelectedGenre;
     private Typeface mAeromaticsFont;
     private RecommendationFragment mRecommendationFragment;
+    private DatabaseReference mRecoRef;
+    private DatabaseReference rootRef;
 
     View.OnClickListener loadGenre = new View.OnClickListener() {
         @Override
@@ -77,6 +82,8 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
                                int pos, long id) {
         if (pos !=0) {
             mSelectedGenre = parent.getItemAtPosition(pos).toString();
+            rootRef = FirebaseDatabase.getInstance().getReference();
+            mRecoRef = rootRef.child(Constants.FIREBASE_CHILD_RECOS);
             mLoveSymbol.setVisibility(View.GONE);
             mSymbolButton.setVisibility(View.VISIBLE);
             mPulsator.setVisibility(View.VISIBLE);

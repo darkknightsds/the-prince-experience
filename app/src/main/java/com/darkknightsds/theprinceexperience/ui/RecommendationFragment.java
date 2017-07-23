@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
+import com.darkknightsds.theprinceexperience.models.Recommendation;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,6 +33,8 @@ public class RecommendationFragment extends Fragment {
     private DatabaseReference mRecoRef;
     private DatabaseReference mAlbumsRef;
     private DatabaseReference rootRef;
+    private FirebaseAuth mAuth;
+    private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     public RecommendationFragment() {}
 
@@ -37,7 +43,6 @@ public class RecommendationFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString("selectedGenre", selectedGenre);
         recommendationFragment.setArguments(args);
-        Log.d("selectedGenre", selectedGenre);
         return recommendationFragment;
     }
 
@@ -52,8 +57,10 @@ public class RecommendationFragment extends Fragment {
         mRecoRef = rootRef.child(Constants.FIREBASE_CHILD_RECOS);
         mAlbumsRef = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS);
 
-        getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
 
+
+        getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
+        
         return view;
     }
 
