@@ -4,6 +4,7 @@ package com.darkknightsds.theprinceexperience.ui;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,12 @@ import android.widget.TextView;
 
 import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
@@ -38,7 +43,7 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
     private String mSelectedGenre;
     private Typeface mAeromaticsFont;
     private RecommendationFragment mRecommendationFragment;
-    private DatabaseReference mRecoRef;
+    private Query mRecoQuery;
     private DatabaseReference rootRef;
 
     View.OnClickListener loadGenre = new View.OnClickListener() {
@@ -83,7 +88,20 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
         if (pos !=0) {
             mSelectedGenre = parent.getItemAtPosition(pos).toString();
             rootRef = FirebaseDatabase.getInstance().getReference();
-            mRecoRef = rootRef.child(Constants.FIREBASE_CHILD_RECOS);
+            mRecoQuery = rootRef.child(Constants.FIREBASE_CHILD_RECOS).orderByChild("genre").equalTo(mSelectedGenre);
+            mRecoQuery.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot reco : dataSnapshot.getChildren()) {
+                        Log.d("this reco", reco.toString());
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
             mLoveSymbol.setVisibility(View.GONE);
             mSymbolButton.setVisibility(View.VISIBLE);
             mPulsator.setVisibility(View.VISIBLE);
