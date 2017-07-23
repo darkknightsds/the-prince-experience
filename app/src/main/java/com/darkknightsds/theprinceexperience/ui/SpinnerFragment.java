@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
+import com.darkknightsds.theprinceexperience.models.Recommendation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,15 +46,19 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
     private RecommendationFragment mRecommendationFragment;
     private Query mRecoQuery;
     private DatabaseReference rootRef;
+    private String mGenre;
+    private String mImage;
+    private String mUri;
+    private Recommendation mRecommmendation;
 
     View.OnClickListener loadGenre = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             mRecommendationFragment = new RecommendationFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("selectedGenre", mSelectedGenre);
+            bundle.putParcelable("selectedGenre", Parcels.wrap(mRecommmendation));
             mRecommendationFragment.setArguments(bundle);
-            ((MainActivity)getActivity()).loadFragment(RecommendationFragment.newInstance(mSelectedGenre));
+            ((MainActivity)getActivity()).loadFragment(RecommendationFragment.newInstance(mRecommmendation));
         }
     };
 
@@ -94,6 +99,10 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot reco : dataSnapshot.getChildren()) {
                         Log.d("this reco", reco.toString());
+                        mGenre = reco.child("genre").toString();
+                        mImage = reco.child("image").toString();
+                        mUri = reco.child("playlistUri").toString();
+                        mRecommmendation = new Recommendation(mGenre, mImage, mUri);
                     }
                 }
 

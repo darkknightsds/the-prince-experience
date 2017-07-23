@@ -20,6 +20,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.parceler.Parcels;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -30,19 +32,15 @@ public class RecommendationFragment extends Fragment {
     @BindView(R.id.albumsRecycler) RecyclerView mAlbumsRecycler;
 
     private Unbinder unbinder;
-    private DatabaseReference mRecoRef;
-    private DatabaseReference mAlbumsRef;
-    private DatabaseReference rootRef;
-    private FirebaseAuth mAuth;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     public RecommendationFragment() {}
 
-    public static RecommendationFragment newInstance(String selectedGenre) {
+    public static RecommendationFragment newInstance(Recommendation recommendation) {
         RecommendationFragment recommendationFragment = new RecommendationFragment();
         Bundle args = new Bundle();
-        args.putString("selectedGenre", selectedGenre);
+        args.putParcelable("recommendation", Parcels.wrap(recommendation));
         recommendationFragment.setArguments(args);
+        Log.d("this new reco", args.toString());
         return recommendationFragment;
     }
 
@@ -52,11 +50,6 @@ public class RecommendationFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
         unbinder = ButterKnife.bind(this, view);
-
-        rootRef = FirebaseDatabase.getInstance().getReference();
-        mRecoRef = rootRef.child(Constants.FIREBASE_CHILD_RECOS);
-        mAlbumsRef = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS);
-
 
 
         getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
