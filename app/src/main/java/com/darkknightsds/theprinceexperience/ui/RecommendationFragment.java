@@ -1,6 +1,7 @@
 package com.darkknightsds.theprinceexperience.ui;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -31,9 +32,12 @@ public class RecommendationFragment extends Fragment {
     @BindView(R.id.recommendationTitle) TextView mRecoTitle;
     @BindView(R.id.recommendationImage) ImageView mRecoImage;
     @BindView(R.id.albumsRecycler) RecyclerView mAlbumsRecycler;
+    @BindView(R.id.playlistHeader) TextView mPlaylistHeader;
+    @BindView(R.id.albumsHeader) TextView mAlbumHeader;
 
     private Unbinder unbinder;
     private Recommendation mRecommendation;
+    private Typeface mAeromaticsFont;
 
     public RecommendationFragment() {}
 
@@ -57,12 +61,14 @@ public class RecommendationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
         unbinder = ButterKnife.bind(this, view);
 
+        mAeromaticsFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/aero_matics_light.ttf");
+        mRecoTitle.setTypeface(mAeromaticsFont);
+        mPlaylistHeader.setTypeface(mAeromaticsFont);
+        mAlbumHeader.setTypeface(mAeromaticsFont);
+
         getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
 
-        Log.d("image url", mRecommendation.getImage());
-
         Picasso.with(view.getContext()).load(mRecommendation.getImage()).into(mRecoImage);
-
         mRecoTitle.setText(mRecommendation.getGenre());
         
         return view;
