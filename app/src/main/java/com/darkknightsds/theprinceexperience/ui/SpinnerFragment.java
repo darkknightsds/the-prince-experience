@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
+import com.darkknightsds.theprinceexperience.models.Album;
 import com.darkknightsds.theprinceexperience.models.Recommendation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +27,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +53,13 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
     private String mGenre;
     private String mImage;
     private String mUri;
+    private String mTitle;
+    private String mYear;
+    private String mGenres;
+    private String mAlbumCover;
     private Recommendation mRecommmendation;
+    private Album mAlbum;
+    private ArrayList<Album> mAlbums;
 
     View.OnClickListener loadGenre = new View.OnClickListener() {
         @Override
@@ -117,7 +126,14 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot reco : dataSnapshot.getChildren()) {
                         if (reco.getValue().toString().contains(mSelectedGenre)) {
-                            Log.d("is this correct", reco.toString());
+                            Log.d("is this correct", reco.getValue().toString());
+//                            mTitle = reco.child("title").getValue().toString();
+//                            mYear = reco.child("year").getValue().toString();
+//                            mGenres = reco.child("genres").getValue().toString();
+//                            mAlbumCover = reco.child("image").getValue().toString();
+//                            reco.getValue() = new Album(mTitle, mYear, mAlbumCover, mGenres);
+//                            mAlbums.add(mAlbum);
+//                            Log.d("list of albums", mAlbums.toString());
                         }
                     }
                 }

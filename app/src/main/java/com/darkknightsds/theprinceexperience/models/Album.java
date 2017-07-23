@@ -13,8 +13,8 @@ public class Album {
 
     public Album() {}
 
-    public Album(String genre, String year, String image, String genres) {
-        this.title = genre;
+    public Album(String title, String year, String image, String genres) {
+        this.title = title;
         this.year = year;
         this.image = image;
         this.genres = genres;
