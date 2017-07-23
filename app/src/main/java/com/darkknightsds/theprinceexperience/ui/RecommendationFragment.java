@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -27,11 +28,12 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class RecommendationFragment extends Fragment {
-    @BindView(R.id.recommendationImage) ImageView mRecoImage;
     @BindView(R.id.recommendationTitle) TextView mRecoTitle;
+    @BindView(R.id.recommendationImage) ImageView mRecoImage;
     @BindView(R.id.albumsRecycler) RecyclerView mAlbumsRecycler;
 
     private Unbinder unbinder;
+    private Recommendation mRecommendation;
 
     public RecommendationFragment() {}
 
@@ -40,10 +42,14 @@ public class RecommendationFragment extends Fragment {
         Bundle args = new Bundle();
         args.putParcelable("recommendation", Parcels.wrap(recommendation));
         recommendationFragment.setArguments(args);
-        Log.d("this new reco", args.toString());
         return recommendationFragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mRecommendation = Parcels.unwrap(getArguments().getParcelable("recommendation"));
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,8 +57,11 @@ public class RecommendationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recommendation, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-
         getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
+
+        Picasso.with(view.getContext()).load(mRecommendation.getImage()).into(mRecoImage);
+
+        mRecoTitle.setText(mRecommendation.getGenre());
         
         return view;
     }

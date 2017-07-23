@@ -98,10 +98,9 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot reco : dataSnapshot.getChildren()) {
-                        Log.d("this reco", reco.toString());
-                        mGenre = reco.child("genre").toString();
-                        mImage = reco.child("image").toString();
-                        mUri = reco.child("playlistUri").toString();
+                        mGenre = reco.child("genre").getValue().toString();
+                        mImage = reco.child("image").getValue().toString();
+                        mUri = reco.child("playlistUri").getValue().toString();
                         mRecommmendation = new Recommendation(mGenre, mImage, mUri);
                     }
                 }
