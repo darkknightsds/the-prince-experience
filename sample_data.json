@@ -28,5 +28,10 @@
     "year": "1990",
     "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/graffiti_bridge.jpg?alt=media&token=5fd591c5-a106-4324-b7e6-a0af18089dfd",
     "genres": "Funk, Gospel"
-    }]
+  },{
+    "title": "Sign o' the Times",
+    "year": "1987",
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/graffiti_bridge.jpg?alt=media&token=5fd591c5-a106-4324-b7e6-a0af18089dfd",
+    "genres": "Rock"
+  }]
 }

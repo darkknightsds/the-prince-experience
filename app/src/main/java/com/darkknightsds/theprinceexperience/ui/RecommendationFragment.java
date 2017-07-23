@@ -4,6 +4,7 @@ package com.darkknightsds.theprinceexperience.ui;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,6 +71,9 @@ public class RecommendationFragment extends Fragment {
 
         Picasso.with(view.getContext()).load(mRecommendation.getImage()).into(mRecoImage);
         mRecoTitle.setText(mRecommendation.getGenre());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mAlbumsRecycler.setLayoutManager(layoutManager);
         
         return view;
     }

@@ -45,6 +45,7 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
     private Typeface mAeromaticsFont;
     private RecommendationFragment mRecommendationFragment;
     private Query mRecoQuery;
+    private Query mAlbumQuery;
     private DatabaseReference rootRef;
     private String mGenre;
     private String mImage;
@@ -102,6 +103,22 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
                         mImage = reco.child("image").getValue().toString();
                         mUri = reco.child("playlistUri").getValue().toString();
                         mRecommmendation = new Recommendation(mGenre, mUri, mImage);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            mAlbumQuery = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS).orderByChild("genres");
+            mAlbumQuery.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot reco : dataSnapshot.getChildren()) {
+                        if (reco.getValue().toString().contains(mSelectedGenre)) {
+                            Log.d("is this correct", reco.toString());
+                        }
                     }
                 }
 

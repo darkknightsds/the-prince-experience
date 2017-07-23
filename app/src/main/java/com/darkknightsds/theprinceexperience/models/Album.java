@@ -9,11 +9,11 @@ public class Album {
     String title;
     String year;
     String image;
-    ArrayList<String> genres = new ArrayList<>();
+    String genres;
 
     public Album() {}
 
-    public Album(String genre, String year, String image, ArrayList<String> genres) {
+    public Album(String genre, String year, String image, String genres) {
         this.title = genre;
         this.year = year;
         this.image = image;
@@ -32,7 +32,7 @@ public class Album {
         return image;
     }
 
-    public ArrayList<String> getGenres() {
+    public String getGenres() {
         return genres;
     }
 }
