@@ -39,6 +39,7 @@ public class RecommendationFragment extends Fragment {
     private Unbinder unbinder;
     private Recommendation mRecommendation;
     private Typeface mAeromaticsFont;
+    private DatabaseReference rootRef;
 
     public RecommendationFragment() {}
 
@@ -74,7 +75,10 @@ public class RecommendationFragment extends Fragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mAlbumsRecycler.setLayoutManager(layoutManager);
-        
+        rootRef = FirebaseDatabase.getInstance().getReference();
+
+
+
         return view;
     }
 
