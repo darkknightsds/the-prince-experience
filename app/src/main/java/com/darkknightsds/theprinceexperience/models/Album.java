@@ -15,6 +15,7 @@ public class Album {
 
     public Album(String title, String year, String image, String genres) {
         this.title = title;
+
         this.year = year;
         this.image = image;
         this.genres = genres;
@@ -35,4 +36,21 @@ public class Album {
     public String getGenres() {
         return genres;
     }
+
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+//
+//    public void setYear(String year) {
+//        this.year = year;
+//    }
+//
+//    public void setImage(String image) {
+//        this.image = image;
+//    }
+//
+//    public void setGenres(String genres) {
+//        this.genres = genres;
+//    }
 }

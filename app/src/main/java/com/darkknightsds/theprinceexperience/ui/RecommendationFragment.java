@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.darkknightsds.theprinceexperience.AlbumsViewHolder;
 import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
+import com.darkknightsds.theprinceexperience.models.Album;
 import com.darkknightsds.theprinceexperience.models.Recommendation;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +42,7 @@ public class RecommendationFragment extends Fragment {
     private Recommendation mRecommendation;
     private Typeface mAeromaticsFont;
     private DatabaseReference rootRef;
+    private FirebaseRecyclerAdapter mAdapter;
 
     public RecommendationFragment() {}
 
@@ -77,7 +80,18 @@ public class RecommendationFragment extends Fragment {
         mAlbumsRecycler.setLayoutManager(layoutManager);
         rootRef = FirebaseDatabase.getInstance().getReference();
 
+        mAdapter = new FirebaseRecyclerAdapter<Album, AlbumsViewHolder>(
+                Album.class,
+                R.layout.album_cards,
+                AlbumsViewHolder.class,
+                rootRef) {
+            @Override
+            public void populateViewHolder(AlbumsViewHolder holder, Album album, int position) {
+                holder.bindView(album.getImage(), album.getTitle());
+            }
+        };
 
+        mAlbumsRecycler.setAdapter(mAdapter);
 
         return view;
     }
