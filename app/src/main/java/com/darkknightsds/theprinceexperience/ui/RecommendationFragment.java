@@ -47,6 +47,7 @@ public class RecommendationFragment extends Fragment {
     private DatabaseReference rootRef;
     private FirebaseRecyclerAdapter mAdapter;
     private Query mAlbumQuery;
+    private View mView;
 
     public RecommendationFragment() {}
 
@@ -83,13 +84,18 @@ public class RecommendationFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mAlbumsRecycler.setLayoutManager(layoutManager);
         rootRef = FirebaseDatabase.getInstance().getReference();
-
+        //below is the node i query
         mAlbumQuery = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS).orderByChild("genres");
         mAlbumQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot reco : dataSnapshot.getChildren()) {
                     if (reco.getValue().toString().contains(mRecommendation.getGenre())) {
+                        //below returns the items i want
+                        Log.d("is this correct", reco.getValue().toString());
+                        Log.d("is this correct", reco.getRef().toString());
+                        //below returns everything in the original query
+                        //how to populate only items that match the above?
                         mAdapter = new FirebaseRecyclerAdapter<Album, AlbumsViewHolder>(
                                 Album.class,
                                 R.layout.album_cards,
@@ -98,9 +104,11 @@ public class RecommendationFragment extends Fragment {
                             @Override
                             public void populateViewHolder(AlbumsViewHolder holder, Album album, int position) {
                                 holder.bindView(album.getImage(), album.getTitle());
+                                if (!album.getGenres().contains(mRecommendation.getGenre())) {
+                                    //should i have something in here?
+                                }
                             }
                         };
-
                         mAlbumsRecycler.setAdapter(mAdapter);
                     }
                 }
@@ -111,20 +119,6 @@ public class RecommendationFragment extends Fragment {
 
             }
         });
-
-//        mAdapter = new FirebaseRecyclerAdapter<Album, AlbumsViewHolder>(
-//                Album.class,
-//                R.layout.album_cards,
-//                AlbumsViewHolder.class,
-//                rootRef) {
-//            @Override
-//            public void populateViewHolder(AlbumsViewHolder holder, Album album, int position) {
-//                holder.bindView(album.getImage(), album.getTitle());
-//            }
-//        };
-//
-//        mAlbumsRecycler.setAdapter(mAdapter);
-
         return view;
     }
 
@@ -134,5 +128,4 @@ public class RecommendationFragment extends Fragment {
         unbinder.unbind();
         mAdapter.cleanup();
     }
-
 }

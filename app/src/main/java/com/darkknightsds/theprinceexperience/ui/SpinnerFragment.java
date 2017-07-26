@@ -120,29 +120,29 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
 
                 }
             });
-            mAlbumQuery = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS).orderByChild("genres");
-            mAlbumQuery.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot reco : dataSnapshot.getChildren()) {
-                        if (reco.getValue().toString().contains(mSelectedGenre)) {
-                            Log.d("is this correct", reco.getValue().toString());
-//                            mTitle = reco.child("title").getValue().toString();
-//                            mYear = reco.child("year").getValue().toString();
-//                            mGenres = reco.child("genres").getValue().toString();
-//                            mAlbumCover = reco.child("image").getValue().toString();
-//                            reco.getValue() = new Album(mTitle, mYear, mAlbumCover, mGenres);
-//                            mAlbums.add(mAlbum);
-//                            Log.d("list of albums", mAlbums.toString());
-                        }
-                    }
-                }
+//            mAlbumQuery = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS).orderByChild("genres");
+//            mAlbumQuery.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    for (DataSnapshot reco : dataSnapshot.getChildren()) {
+//                        if (reco.getValue().toString().contains(mSelectedGenre)) {
+//                            Log.d("is this correct", reco.getValue().toString());
+////                            mTitle = reco.child("title").getValue().toString();
+////                            mYear = reco.child("year").getValue().toString();
+////                            mGenres = reco.child("genres").getValue().toString();
+////                            mAlbumCover = reco.child("image").getValue().toString();
+////                            reco.getValue() = new Album(mTitle, mYear, mAlbumCover, mGenres);
+////                            mAlbums.add(mAlbum);
+////                            Log.d("list of albums", mAlbums.toString());
+//                        }
+//                    }
+//                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            });
             mLoveSymbol.setVisibility(View.GONE);
             mSymbolButton.setVisibility(View.VISIBLE);
             mPulsator.setVisibility(View.VISIBLE);
