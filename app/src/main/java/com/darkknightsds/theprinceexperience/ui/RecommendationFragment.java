@@ -1,7 +1,9 @@
 package com.darkknightsds.theprinceexperience.ui;
 
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,12 +30,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class RecommendationFragment extends Fragment {
+public class RecommendationFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.recommendationTitle) TextView mRecoTitle;
     @BindView(R.id.recommendationImage) ImageView mRecoImage;
     @BindView(R.id.albumsRecycler) RecyclerView mAlbumsRecycler;
     @BindView(R.id.playlistHeader) TextView mPlaylistHeader;
     @BindView(R.id.albumsHeader) TextView mAlbumHeader;
+    @BindView(R.id.spotifyLogo) ImageView mSpotifyLogo;
 
     private Unbinder unbinder;
     private Recommendation mRecommendation;
@@ -67,6 +70,7 @@ public class RecommendationFragment extends Fragment {
         mRecoTitle.setTypeface(mAeromaticsFont);
         mPlaylistHeader.setTypeface(mAeromaticsFont);
         mAlbumHeader.setTypeface(mAeromaticsFont);
+        mSpotifyLogo.setOnClickListener(this);
 
         getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
 
@@ -97,6 +101,15 @@ public class RecommendationFragment extends Fragment {
         mAlbumsRecycler.setAdapter(mAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onClick (View v) {
+        if (v == mSpotifyLogo) {
+            Intent playlistIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mRecommendation.getPlaylistUri()));
+            startActivity(playlistIntent);
+        }
     }
 
     @Override
