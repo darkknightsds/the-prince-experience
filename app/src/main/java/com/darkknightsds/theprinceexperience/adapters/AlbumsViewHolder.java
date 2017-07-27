@@ -1,4 +1,4 @@
-package com.darkknightsds.theprinceexperience;
+package com.darkknightsds.theprinceexperience.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.darkknightsds.theprinceexperience.R;
 import com.squareup.picasso.Picasso;
 
 public class AlbumsViewHolder extends RecyclerView.ViewHolder {

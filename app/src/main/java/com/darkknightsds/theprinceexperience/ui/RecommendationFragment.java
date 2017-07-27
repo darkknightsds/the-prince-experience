@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.darkknightsds.theprinceexperience.AlbumsViewHolder;
+import com.darkknightsds.theprinceexperience.adapters.AlbumsViewHolder;
 import com.darkknightsds.theprinceexperience.Constants;
 import com.darkknightsds.theprinceexperience.R;
 import com.darkknightsds.theprinceexperience.models.Album;
