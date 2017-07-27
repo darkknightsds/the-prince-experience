@@ -19,13 +19,8 @@ import com.darkknightsds.theprinceexperience.R;
 import com.darkknightsds.theprinceexperience.models.Album;
 import com.darkknightsds.theprinceexperience.models.Recommendation;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -44,10 +39,8 @@ public class RecommendationFragment extends Fragment {
     private Unbinder unbinder;
     private Recommendation mRecommendation;
     private Typeface mAeromaticsFont;
-    private DatabaseReference rootRef;
     private FirebaseRecyclerAdapter mAdapter;
     private Query mAlbumQuery;
-    private View mView;
 
     public RecommendationFragment() {}
 
@@ -83,42 +76,27 @@ public class RecommendationFragment extends Fragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mAlbumsRecycler.setLayoutManager(layoutManager);
-        rootRef = FirebaseDatabase.getInstance().getReference();
-        //below is the node i query
-        mAlbumQuery = rootRef.child(Constants.FIREBASE_CHILD_ALBUMS).orderByChild("genres");
-        mAlbumQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot reco : dataSnapshot.getChildren()) {
-                    if (reco.getValue().toString().contains(mRecommendation.getGenre())) {
-                        //below returns the items i want
-                        Log.d("is this correct", reco.getValue().toString());
-                        Log.d("is this correct", reco.getRef().toString());
-                        //below returns everything in the original query
-                        //how to populate only items that match the above?
-                        mAdapter = new FirebaseRecyclerAdapter<Album, AlbumsViewHolder>(
-                                Album.class,
-                                R.layout.album_cards,
-                                AlbumsViewHolder.class,
-                                mAlbumQuery) {
-                            @Override
-                            public void populateViewHolder(AlbumsViewHolder holder, Album album, int position) {
-                                holder.bindView(album.getImage(), album.getTitle());
-                                if (!album.getGenres().contains(mRecommendation.getGenre())) {
-                                    //should i have something in here?
-                                }
-                            }
-                        };
-                        mAlbumsRecycler.setAdapter(mAdapter);
-                    }
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        mAlbumQuery = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_ALBUMS)
+                .orderByChild("genre")
+                .equalTo(mRecommendation.getGenre());
 
+        mAdapter = new FirebaseRecyclerAdapter<Album, AlbumsViewHolder>(
+                Album.class,
+                R.layout.album_cards,
+                AlbumsViewHolder.class,
+                mAlbumQuery) {
+            @Override
+            public void populateViewHolder(AlbumsViewHolder holder, Album album, int position) {
+                holder.bindView(album.getImage(), album.getTitle());
             }
-        });
+        };
+
+        mAlbumsRecycler.setAdapter(mAdapter);
+
         return view;
     }
 
