@@ -48,6 +48,7 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
     private String mGenre;
     private String mImage;
     private String mUri;
+    private String mDescription;
     private Recommendation mRecommmendation;
 
     View.OnClickListener loadGenre = new View.OnClickListener() {
@@ -100,7 +101,8 @@ public class SpinnerFragment extends Fragment implements AdapterView.OnItemSelec
                         mGenre = reco.child("genre").getValue().toString();
                         mImage = reco.child("image").getValue().toString();
                         mUri = reco.child("playlistUri").getValue().toString();
-                        mRecommmendation = new Recommendation(mGenre, mUri, mImage);
+                        mDescription = reco.child("description").getValue().toString();
+                        mRecommmendation = new Recommendation(mGenre, mUri, mImage, mDescription);
                     }
                 }
 

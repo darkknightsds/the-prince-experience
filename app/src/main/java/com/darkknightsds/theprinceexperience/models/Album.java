@@ -12,15 +12,16 @@ public class Album {
     String year;
     String image;
     String genre;
+    String wikipedia;
 
     public Album() {}
 
-    public Album(String title, String year, String image, String genre) {
+    public Album(String title, String year, String image, String genre, String wikipedia) {
         this.title = title;
-
         this.year = year;
         this.image = image;
         this.genre = genre;
+        this.wikipedia = wikipedia;
     }
 
     public String getTitle() {
@@ -35,7 +36,12 @@ public class Album {
         return image;
     }
 
-    public String getGenres() {
+    public String getGenre() {
         return genre;
     }
+
+    public String getWikipedia() {
+        return wikipedia;
+    }
+
 }

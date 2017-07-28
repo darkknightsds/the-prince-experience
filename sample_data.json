@@ -1,32 +1,38 @@
 { "recommendations": [{
   "genre": "Funk",
   "playlistUri": "spotify:user:12146790877:playlist:1XoahiqxBG1RMi4kLdU1gT",
+  "description": "There's a reason Prince was known as His Royal Badness - he fused bass, horns and electronica to create some of the funkiest tracks ever heard.",
   "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/prince_funk.jpg?alt=media&token=afafb195-c88e-4890-8388-476724c3c7bf"
 }],
   "albums": [{
     "title": "Dirty Mind",
     "year": "1980",
     "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/dirty_mind.jpg?alt=media&token=98ef45aa-f5d8-46b1-9516-1ea85bf2747f",
-    "genre": "Funk"
+    "genre": "Funk",
+    "wikipedia": "https://en.wikipedia.org/wiki/Dirty_Mind"
   },{
     "title": "Controversy",
     "year": "1981",
     "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/controversy.jpg?alt=media&token=f335a277-4ace-4607-82c6-2acb446fcc5d",
-    "genre": "Funk"
+    "genre": "Funk",
+    "wikipedia": "https://en.wikipedia.org/wiki/Controversy_(Prince_album)"
   },{
     "title": "What Time Is It?",
     "year": "1982",
-    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/dirty_mind.jpg?alt=media&token=98ef45aa-f5d8-46b1-9516-1ea85bf2747f",
-    "genre": "Funk"
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/what_time_is_it.jpg?alt=media&token=c6e16d9e-6543-4e4b-852b-0473f8424b36",
+    "genre": "Funk",
+    "wikipedia": "https://en.wikipedia.org/wiki/What_Time_Is_It%3F_(album)"
   },{
     "title": "The Black Album",
     "year": "1987",
     "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/the_black_album.jpg?alt=media&token=0a506b09-7d18-4b84-9871-322b4c3b36bd",
-    "genre": "Funk"
+    "genre": "Funk",
+    "wikipedia": "https://en.wikipedia.org/wiki/The_Black_Album_(Prince_album)"
   },{
     "title": "Sign o' the Times",
     "year": "1987",
-    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/graffiti_bridge.jpg?alt=media&token=5fd591c5-a106-4324-b7e6-a0af18089dfd",
-    "genre": "Rock"
+    "image": "https://firebasestorage.googleapis.com/v0/b/the-prince-experience.appspot.com/o/Prince_sign-o-the-times_250.jpg?alt=media&token=ded25b58-20c5-4073-bb47-e8c53e4f6a8a",
+    "genre": "Rock",
+    "wikipedia": "https://en.wikipedia.org/wiki/Sign_o%27_the_Times"
   }]
 }

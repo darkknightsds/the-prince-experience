@@ -9,13 +9,15 @@ public class Recommendation {
     String genre;
     String playlistUri;
     String image;
+    String description;
 
     public Recommendation() {}
 
-    public Recommendation(String genre, String playlistUri, String image) {
+    public Recommendation(String genre, String playlistUri, String image, String description) {
         this.genre = genre;
         this.playlistUri = playlistUri;
         this.image = image;
+        this.description = description;
     }
 
     public String getGenre() {
@@ -30,5 +32,7 @@ public class Recommendation {
         return image;
     }
 
-
+    public String getDescription() {
+        return description;
+    }
 }
