@@ -97,7 +97,7 @@ public class RecommendationFragment extends Fragment implements View.OnClickList
                 mAlbumQuery) {
             @Override
             public void populateViewHolder(AlbumsViewHolder holder, Album album, int position) {
-                holder.bindView(album.getImage(), album.getTitle(), album.getYear());
+                holder.bindView(album.getImage(), album.getTitle(), album.getYear(), album.getWikipedia());
             }
         };
 
@@ -109,8 +109,7 @@ public class RecommendationFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick (View v) {
         if (v == mSpotifyLogo) {
-            Intent playlistIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(mRecommendation.getPlaylistUri()));
+            Intent playlistIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mRecommendation.getPlaylistUri()));
             startActivity(playlistIntent);
         }
     }

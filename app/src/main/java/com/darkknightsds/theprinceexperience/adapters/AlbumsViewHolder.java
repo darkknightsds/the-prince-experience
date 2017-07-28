@@ -1,7 +1,9 @@
 package com.darkknightsds.theprinceexperience.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ public class AlbumsViewHolder extends RecyclerView.ViewHolder {
     private TextView mAlbumNameCard;
     private TextView mAlbumDateCard;
     private Typeface mAeromaticsFont;
+    private String mWikipedia;
 
     public AlbumsViewHolder(View itemView) {
         super(itemView);
@@ -31,10 +34,17 @@ public class AlbumsViewHolder extends RecyclerView.ViewHolder {
         mAlbumNameCard.setTypeface(mAeromaticsFont);
     }
 
-    public void bindView(String image, String albumName, String albumDate) {
+    public void bindView(String image, String albumName, String albumDate, String wikipedia) {
         Picasso.with(mView.getContext()).load(image).into(mAlbumImageCard);
         mAlbumNameCard.setText(albumName);
         mAlbumDateCard.setText(albumDate);
+        mWikipedia = wikipedia;
+        mAlbumImageCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                Intent wikiIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mWikipedia));
+                mContext.startActivity(wikiIntent);
+            }
+        });
     }
-
 }
