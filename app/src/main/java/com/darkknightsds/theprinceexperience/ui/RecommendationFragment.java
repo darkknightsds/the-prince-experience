@@ -94,7 +94,7 @@ public class RecommendationFragment extends Fragment implements View.OnClickList
                 mAlbumQuery) {
             @Override
             public void populateViewHolder(AlbumsViewHolder holder, Album album, int position) {
-                holder.bindView(album.getImage(), album.getTitle());
+                holder.bindView(album.getImage(), album.getTitle(), album.getYear());
             }
         };
 

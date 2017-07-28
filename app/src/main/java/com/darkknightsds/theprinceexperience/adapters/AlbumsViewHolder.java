@@ -15,6 +15,7 @@ public class AlbumsViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView mAlbumImageCard;
     private TextView mAlbumNameCard;
+    private TextView mAlbumDateCard;
 
     public AlbumsViewHolder(View itemView) {
         super(itemView);
@@ -22,11 +23,13 @@ public class AlbumsViewHolder extends RecyclerView.ViewHolder {
         mContext  = itemView.getContext();
         mAlbumImageCard = (ImageView) mView.findViewById(R.id.albumImageCard);
         mAlbumNameCard = (TextView) mView.findViewById(R.id.albumNameCard);
+        mAlbumDateCard = (TextView) mView.findViewById(R.id.albumDateCard);
     }
 
-    public void bindView(String image, String albumName) {
+    public void bindView(String image, String albumName, String albumDate) {
         Picasso.with(mView.getContext()).load(image).into(mAlbumImageCard);
         mAlbumNameCard.setText(albumName);
+        mAlbumDateCard.setText(albumDate);
     }
 
 }

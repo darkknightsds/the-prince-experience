@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="150dp"
-        android:layout_height="175dp"
+        android:layout_height="215dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
+        android:background="@color/colorSecondaryText"
         android:layout_marginBottom="5dp">
 
         <android.support.constraint.ConstraintLayout
+            android:background="@color/colorSecondaryText"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -33,6 +35,8 @@
                 android:id="@+id/albumNameCard"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimaryText"
                 android:text="Album Name"
                 android:layout_marginLeft="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -40,6 +44,19 @@
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/albumImageCard" />
+
+            <TextView
+                android:id="@+id/albumDateCard"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_height="30dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="4dp"
+                android:text="TextView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/albumNameCard" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
