@@ -37,6 +37,7 @@ public class RecommendationFragment extends Fragment implements View.OnClickList
     @BindView(R.id.playlistHeader) TextView mPlaylistHeader;
     @BindView(R.id.albumsHeader) TextView mAlbumHeader;
     @BindView(R.id.spotifyLogo) ImageView mSpotifyLogo;
+    @BindView(R.id.albumDescription) TextView mAlbumDescription;
 
     private Unbinder unbinder;
     private Recommendation mRecommendation;
@@ -70,12 +71,14 @@ public class RecommendationFragment extends Fragment implements View.OnClickList
         mRecoTitle.setTypeface(mAeromaticsFont);
         mPlaylistHeader.setTypeface(mAeromaticsFont);
         mAlbumHeader.setTypeface(mAeromaticsFont);
+        mAlbumDescription.setTypeface(mAeromaticsFont);
         mSpotifyLogo.setOnClickListener(this);
 
         getActivity().findViewById(R.id.fab).setVisibility(View.GONE);
 
         Picasso.with(view.getContext()).load(mRecommendation.getImage()).into(mRecoImage);
         mRecoTitle.setText(mRecommendation.getGenre());
+        mAlbumDescription.setText(mRecommendation.getDescription());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mAlbumsRecycler.setLayoutManager(layoutManager);
